@@ -41,18 +41,19 @@ namespace LoginScreen
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("맑은 고딕", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblTitle.Location = new System.Drawing.Point(347, 75);
+            this.lblTitle.Location = new System.Drawing.Point(295, 80);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(285, 106);
+            this.lblTitle.Size = new System.Drawing.Size(445, 106);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "로그인";
+            this.lblTitle.Text = "Ｌｏｇｉｎ";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtId.Location = new System.Drawing.Point(129, 250);
-            this.txtId.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txtId.Margin = new System.Windows.Forms.Padding(8);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(765, 61);
             this.txtId.TabIndex = 1;
@@ -62,7 +63,7 @@ namespace LoginScreen
             // 
             this.txtPassword.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtPassword.Location = new System.Drawing.Point(129, 350);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(8);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(611, 61);
             this.txtPassword.TabIndex = 2;
@@ -72,7 +73,7 @@ namespace LoginScreen
             // 
             this.btnLogin.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnLogin.Location = new System.Drawing.Point(129, 512);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(8);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(503, 112);
             this.btnLogin.TabIndex = 4;
@@ -97,7 +98,7 @@ namespace LoginScreen
             // 
             this.btnShowPw.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnShowPw.Location = new System.Drawing.Point(771, 350);
-            this.btnShowPw.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.btnShowPw.Margin = new System.Windows.Forms.Padding(8);
             this.btnShowPw.Name = "btnShowPw";
             this.btnShowPw.Size = new System.Drawing.Size(129, 72);
             this.btnShowPw.TabIndex = 3;
@@ -109,7 +110,7 @@ namespace LoginScreen
             // 
             this.btnClear.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnClear.Location = new System.Drawing.Point(643, 512);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(8);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(257, 112);
             this.btnClear.TabIndex = 6;
@@ -129,7 +130,7 @@ namespace LoginScreen
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.lblTitle);
-            this.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.Margin = new System.Windows.Forms.Padding(8);
             this.Name = "Form1";
             this.Text = "로그인 화면";
             this.Load += new System.EventHandler(this.Form1_Load);

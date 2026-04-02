@@ -241,5 +241,10 @@ namespace LoginScreen
             // 포커스 로고로 이동
             this.ActiveControl = lblTitle;
         }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

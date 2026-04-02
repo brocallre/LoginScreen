@@ -11,6 +11,11 @@ namespace LoginScreen
         private string pwPlaceholder = "비밀번호를 입력하세요";
         private bool isPasswordShowing = false; // 비밀번호 보기 상태
 
+        // 과제 4: 실패 횟수 및 타이머 변수
+        private int failCount = 0;
+        private Timer lockoutTimer = new Timer();
+        private int lockoutSeconds = 10;
+
         public Form1()
         {
             InitializeComponent();
@@ -28,6 +33,10 @@ namespace LoginScreen
 
             txtPassword.GotFocus += TxtPassword_GotFocus;
             txtPassword.LostFocus += TxtPassword_LostFocus;
+
+            // 과제 4: 타이머 설정 (1초 간격)
+            lockoutTimer.Interval = 1000;
+            lockoutTimer.Tick += LockoutTimer_Tick;
 
             // 시작하자마자 텍스트박스에 커서가 가는 것을 방지하기 위해 로고(레이블)에 포커스를 줌
             this.ActiveControl = lblTitle;
@@ -96,16 +105,83 @@ namespace LoginScreen
             if (id == idPlaceholder) id = "";
             if (pw == pwPlaceholder) pw = "";
 
+            // 1. 아이디 검증 (영문, 숫자만 허용 - 공백 불가 등)
+            if (!System.Text.RegularExpressions.Regex.IsMatch(id, "^[a-zA-Z0-9]+$"))
+            {
+                lblError.Text = "아이디는 영문과 숫자만 입력할 수 있습니다.";
+                lblError.Visible = true;
+                return;
+            }
+
+            // 2. 비밀번호 검증 (최소 4자리 이상)
+            if (pw.Length < 4)
+            {
+                lblError.Text = "비밀번호는 최소 4자리 이상이어야 합니다.";
+                lblError.Visible = true;
+                return;
+            }
+
             // 아이디와 비밀번호가 모두 맞는지 확인 (&& 연산자 사용)
             if (id == "admin" && pw == "1234")
             {
+                failCount = 0; // 성공 시 실패 횟수 초기화
                 lblError.Visible = false;
                 MessageBox.Show("로그인 성공!", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                lblError.Text = "아이디 또는 비밀번호가 틀렸습니다.";
-                lblError.Visible = true;
+                failCount++;
+                if (failCount >= 3)
+                {
+                    LockScreen(); // 3회 이상 실패 시 컨트롤 잠금
+                }
+                else
+                {
+                    lblError.Text = $"아이디 또는 비밀번호가 틀렸습니다. (실패 {failCount}/3)";
+                    lblError.Visible = true;
+                }
+            }
+        }
+
+        // 로그인 화면 잠금 함수
+        private void LockScreen()
+        {
+            txtId.Enabled = false;
+            txtPassword.Enabled = false;
+            btnLogin.Enabled = false;
+            btnClear.Enabled = false;
+            btnShowPw.Enabled = false;
+
+            lockoutSeconds = 10;
+            lblError.Text = $"3회 연속 로그인 실패! {lockoutSeconds}초 후 다시 시도하세요.";
+            lblError.Visible = true;
+            
+            lockoutTimer.Start();
+        }
+
+        // 타이머 이벤트 동작 (1초마다 실행)
+        private void LockoutTimer_Tick(object sender, EventArgs e)
+        {
+            lockoutSeconds--;
+            if (lockoutSeconds > 0)
+            {
+                lblError.Text = $"3회 연속 로그인 실패! {lockoutSeconds}초 후 다시 시도하세요.";
+            }
+            else
+            {
+                lockoutTimer.Stop();
+                failCount = 0; // 다시 기회 부여
+
+                lblError.Visible = false;
+
+                // 컨트롤 활성화
+                txtId.Enabled = true;
+                txtPassword.Enabled = true;
+                btnLogin.Enabled = true;
+                btnClear.Enabled = true;
+                btnShowPw.Enabled = true;
+
+                this.ActiveControl = txtId; // 아이디 창으로 자동 포커스
             }
         }
 

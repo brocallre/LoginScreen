@@ -9,6 +9,7 @@ namespace LoginScreen
         // 텍스트박스 기본 안내문구(Placeholder) 설정
         private string idPlaceholder = "아이디를 입력하세요";
         private string pwPlaceholder = "비밀번호를 입력하세요";
+        private bool isPasswordShowing = false; // 비밀번호 보기 상태
 
         public Form1()
         {
@@ -56,8 +57,8 @@ namespace LoginScreen
                 txt.Text = "";
                 txt.ForeColor = Color.Black;
 
-                // 비밀번호 칸에 글자를 입력할 때부터 별표 표시
-                if (txt == txtPassword)
+                // 비밀번호 칸에 글자를 입력할 때부터 별표 표시 (보기 모드가 아닐 때만)
+                if (txt == txtPassword && !isPasswordShowing)
                 {
                     txt.PasswordChar = '*';
                 }
@@ -66,6 +67,7 @@ namespace LoginScreen
 
         private void TxtId_GotFocus(object sender, EventArgs e)
         {
+            lblError.Visible = false; // 다시 입력하려고 하면 에러 메시지 숨김
             RemovePlaceholder(txtId, idPlaceholder);
         }
 
@@ -76,6 +78,7 @@ namespace LoginScreen
 
         private void TxtPassword_GotFocus(object sender, EventArgs e)
         {
+            lblError.Visible = false; // 다시 입력하려고 하면 에러 메시지 숨김
             RemovePlaceholder(txtPassword, pwPlaceholder);
         }
 
@@ -96,12 +99,71 @@ namespace LoginScreen
             // 아이디와 비밀번호가 모두 맞는지 확인 (&& 연산자 사용)
             if (id == "admin" && pw == "1234")
             {
+                lblError.Visible = false;
                 MessageBox.Show("로그인 성공!", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("아이디 또는 비밀번호가 틀렸습니다.", "실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblError.Text = "아이디 또는 비밀번호가 틀렸습니다.";
+                lblError.Visible = true;
             }
+        }
+
+        private void btnShowPw_Click(object sender, EventArgs e)
+        {
+            // 힌트 상태일 때는 토글 동작 안 함
+            if (txtPassword.Text == pwPlaceholder || string.IsNullOrWhiteSpace(txtPassword.Text))
+                return;
+
+            isPasswordShowing = !isPasswordShowing;
+
+            if (isPasswordShowing)
+            {
+                txtPassword.PasswordChar = '\0'; // 비밀번호 보이기
+                btnShowPw.Text = "숨김";
+            }
+            else
+            {
+                txtPassword.PasswordChar = '*'; // 비밀번호 숨기기
+                btnShowPw.Text = "보기";
+            }
+        }
+
+        private void txtId_KeyDown(object sender, KeyEventArgs e)
+        {
+            // 엔터 키를 누르면 패스워드 입력창으로 포커스 이동
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // 삑 소리 제거
+                txtPassword.Focus();
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            // 엔터 키를 누르면 로그인 버튼 클릭
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                btnLogin.PerformClick();
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            // 텍스트박스 초기화 및 힌트 상태로 되돌리기
+            txtId.Text = "";
+            txtPassword.Text = "";
+            
+            isPasswordShowing = false;
+            btnShowPw.Text = "보기";
+            lblError.Visible = false;
+
+            SetPlaceholder(txtId, idPlaceholder);
+            SetPlaceholder(txtPassword, pwPlaceholder);
+
+            // 포커스 로고로 이동
+            this.ActiveControl = lblTitle;
         }
     }
 }

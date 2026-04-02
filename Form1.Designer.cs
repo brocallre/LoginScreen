@@ -41,70 +41,77 @@ namespace LoginScreen
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("맑은 고딕", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblTitle.Location = new System.Drawing.Point(135, 30);
+            this.lblTitle.Location = new System.Drawing.Point(347, 75);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(116, 45);
+            this.lblTitle.Size = new System.Drawing.Size(285, 106);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "로그인";
             // 
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtId.Location = new System.Drawing.Point(50, 100);
+            this.txtId.Location = new System.Drawing.Point(129, 250);
+            this.txtId.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(300, 29);
+            this.txtId.Size = new System.Drawing.Size(765, 61);
             this.txtId.TabIndex = 1;
             this.txtId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtId_KeyDown);
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtPassword.Location = new System.Drawing.Point(50, 140);
+            this.txtPassword.Location = new System.Drawing.Point(129, 350);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(240, 29);
+            this.txtPassword.Size = new System.Drawing.Size(611, 61);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
-            // btnShowPw
+            // btnLogin
             // 
-            this.btnShowPw.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnShowPw.Location = new System.Drawing.Point(300, 140);
-            this.btnShowPw.Name = "btnShowPw";
-            this.btnShowPw.Size = new System.Drawing.Size(50, 29);
-            this.btnShowPw.TabIndex = 3;
-            this.btnShowPw.Text = "보기";
-            this.btnShowPw.UseVisualStyleBackColor = true;
-            this.btnShowPw.Click += new System.EventHandler(this.btnShowPw_Click);
+            this.btnLogin.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnLogin.Location = new System.Drawing.Point(129, 512);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(503, 112);
+            this.btnLogin.TabIndex = 4;
+            this.btnLogin.Text = "로그인";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblError
             // 
             this.lblError.AutoSize = true;
             this.lblError.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(50, 175);
+            this.lblError.Location = new System.Drawing.Point(129, 438);
+            this.lblError.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(222, 17);
+            this.lblError.Size = new System.Drawing.Size(558, 45);
             this.lblError.TabIndex = 5;
             this.lblError.Text = "아이디 또는 비밀번호가 틀렸습니다.";
             this.lblError.Visible = false;
             // 
-            // btnLogin
+            // btnShowPw
             // 
-            this.btnLogin.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnLogin.Location = new System.Drawing.Point(50, 205);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(190, 45);
-            this.btnLogin.TabIndex = 4;
-            this.btnLogin.Text = "로그인";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnShowPw.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnShowPw.Location = new System.Drawing.Point(771, 350);
+            this.btnShowPw.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.btnShowPw.Name = "btnShowPw";
+            this.btnShowPw.Size = new System.Drawing.Size(129, 72);
+            this.btnShowPw.TabIndex = 3;
+            this.btnShowPw.Text = "보기";
+            this.btnShowPw.UseVisualStyleBackColor = true;
+            this.btnShowPw.Click += new System.EventHandler(this.btnShowPw_Click);
             // 
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnClear.Location = new System.Drawing.Point(250, 205);
+            this.btnClear.Location = new System.Drawing.Point(643, 512);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(100, 45);
+            this.btnClear.Size = new System.Drawing.Size(257, 112);
             this.btnClear.TabIndex = 6;
             this.btnClear.Text = "지우기";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -112,9 +119,9 @@ namespace LoginScreen
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 300);
+            this.ClientSize = new System.Drawing.Size(1029, 750);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.btnLogin);
@@ -122,6 +129,7 @@ namespace LoginScreen
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.lblTitle);
+            this.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.Name = "Form1";
             this.Text = "로그인 화면";
             this.Load += new System.EventHandler(this.Form1_Load);
